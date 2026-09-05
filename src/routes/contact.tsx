@@ -2,11 +2,9 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { Nav } from "@/components/site/Nav";
 import { Footer } from "@/components/site/Footer";
 import { Reveal } from "@/components/site/primitives";
-import markAsset from "@/assets/sulcus-mark.png.asset.json";
 
 const TITLE = "Contact — Sulcus";
-const DESC =
-  "Talk to the Sulcus team about control and supervision infrastructure for production AI-agent systems.";
+const DESC = "Talk to the Sulcus team about runtime controls and agent integration.";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -16,10 +14,10 @@ export const Route = createFileRoute("/contact")({
       { property: "og:title", content: TITLE },
       { property: "og:description", content: DESC },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "/contact" },
+      { property: "og:url", content: "https://sulcus.dev/contact" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "canonical", href: "/contact" }],
+    links: [{ rel: "canonical", href: "https://sulcus.dev/contact" }],
   }),
   component: ContactPage,
 });
@@ -34,10 +32,10 @@ function ContactPage() {
   return (
     <div className="min-h-screen bg-background">
       <Nav />
-      <main className="mx-auto max-w-6xl px-6 pb-28 pt-36">
+      <main id="main" className="mx-auto max-w-6xl px-6 pb-28 pt-36">
         <Reveal>
           <img
-            src={markAsset.url}
+            src="/favicon.png"
             alt=""
             aria-hidden="true"
             className="mb-8 h-14 w-14 select-none object-contain"
@@ -47,8 +45,8 @@ function ContactPage() {
             Talk to the team.
           </h1>
           <p className="mt-6 max-w-xl text-lg text-muted-foreground">
-            Sulcus is early. We speak with investors, technical founders, and teams running agents
-            in production.
+            Building with agents? Talk to us about your tool-execution boundaries, integration
+            needs, or experience with the Sulcus release candidate.
           </p>
         </Reveal>
 
@@ -69,7 +67,10 @@ function ContactPage() {
         </Reveal>
 
         <Reveal delay={160}>
-          <Link to="/" className="mt-10 inline-block text-sm text-muted-foreground hover:text-foreground">
+          <Link
+            to="/"
+            className="mt-10 inline-block text-sm text-muted-foreground hover:text-foreground"
+          >
             ← Back to overview
           </Link>
         </Reveal>

@@ -1,66 +1,49 @@
-import { Link } from "@tanstack/react-router";
 import { Reveal } from "./primitives";
-import { ControlPlaneViz } from "./ControlPlaneViz";
-import markAsset from "@/assets/sulcus-mark.png.asset.json";
+import { DOCS, REPO } from "./content";
 
 export function Hero() {
   return (
-    <section id="top" className="relative overflow-hidden pt-32 md:pt-40">
-      <div className="grid-bg pointer-events-none absolute inset-0 [mask-image:radial-gradient(70%_60%_at_50%_0%,black,transparent)]" />
-      <div
-        className="pointer-events-none absolute inset-x-0 top-0 h-[420px]"
-        style={{
-          background:
-            "radial-gradient(60% 100% at 50% 0%, color-mix(in oklab, var(--signal) 12%, transparent), transparent 70%)",
-        }}
-      />
-      <img
-        src={markAsset.url}
-        alt=""
-        aria-hidden="true"
-        className="pointer-events-none absolute -right-32 top-24 hidden w-[560px] select-none opacity-[0.05] lg:block"
-      />
-      <div className="relative mx-auto w-full max-w-6xl px-6">
+    <section
+      id="top"
+      className="relative overflow-hidden border-b border-border pt-32 pb-16 md:pt-44 md:pb-24"
+    >
+      <div className="grid-bg pointer-events-none absolute inset-0 [mask-image:linear-gradient(black,transparent)]" />
+      <div className="relative mx-auto max-w-6xl px-6">
+        <p className="label-mono flex flex-wrap items-center gap-3">
+          <span className="h-1.5 w-1.5 bg-primary" />
+          Python agent runtime
+          <span className="border border-border-strong px-2 py-1">1.0 release candidate</span>
+        </p>
+        <h1 className="mt-8 max-w-5xl text-[clamp(3.2rem,7.5vw,6.5rem)] font-semibold leading-[0.98]">
+          Runtime control
+          <br />
+          for <span className="text-primary">AI agents.</span>
+        </h1>
+        <p className="mt-8 max-w-2xl text-lg leading-relaxed text-muted-foreground md:text-xl">
+          Put explicit checks between a tool request and its execution. Sulcus applies tool-name
+          permissions, call limits, and approval gates to calls routed through its agent loop.
+        </p>
+        <div className="mt-9 flex flex-wrap gap-3">
+          <a className="button-primary" href="#developers">
+            Try the code <span aria-hidden="true">↗</span>
+          </a>
+          <a className="button-secondary" href={DOCS}>
+            Read the docs
+          </a>
+          <a className="px-4 py-3 text-sm text-muted-foreground hover:text-primary" href={REPO}>
+            GitHub ↗
+          </a>
+        </div>
         <Reveal>
-          <div className="inline-flex items-center gap-2 rounded-full border border-border px-3 py-1">
-            <span className="h-1.5 w-1.5 rounded-full bg-primary anim-pulse-node" />
-            <span className="label-mono">AI agent infrastructure · control &amp; supervision</span>
-          </div>
-        </Reveal>
-
-        <Reveal delay={80}>
-          <h1 className="mt-8 max-w-4xl text-balance text-4xl font-semibold leading-[1.02] md:text-7xl">
-            The control layer for <span className="text-primary text-glow">autonomous AI</span>.
-          </h1>
-        </Reveal>
-
-        <Reveal delay={160}>
-          <p className="mt-7 max-w-2xl text-pretty text-lg leading-relaxed text-muted-foreground">
-            Sulcus provides the infrastructure to supervise, coordinate, observe, and control
-            AI-agent systems in production.
-          </p>
-        </Reveal>
-
-        <Reveal delay={240}>
-          <div className="mt-10 flex flex-wrap items-center gap-3">
-            <a
-              href="#architecture"
-              className="rounded-sm bg-primary px-5 py-3 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
-            >
-              Explore the Architecture
-            </a>
-            <Link
-              to="/contact"
-              className="rounded-sm border border-border-strong px-5 py-3 text-sm font-medium text-foreground transition-colors hover:border-primary hover:text-primary"
-            >
-              Talk to the Team
-            </Link>
-          </div>
-        </Reveal>
-
-        <Reveal delay={320}>
-          <div className="mt-16 md:mt-20">
-            <ControlPlaneViz />
+          <div className="mt-12 flex flex-wrap items-center gap-x-5 gap-y-3 border-t border-border pt-6 font-mono text-xs text-muted-foreground">
+            <span>Agent requests</span>
+            <span aria-hidden="true">→</span>
+            <span className="text-primary">Sulcus checks</span>
+            <span aria-hidden="true">→</span>
+            <span>Your tool executes</span>
+            <span className="basis-full text-[11px] md:ml-auto md:basis-auto">
+              Explicit integration. Inspectable outcomes.
+            </span>
           </div>
         </Reveal>
       </div>

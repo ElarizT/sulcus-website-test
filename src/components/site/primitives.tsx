@@ -52,18 +52,25 @@ export function Section({
   id,
   index,
   label,
+  compact = false,
   className,
   children,
 }: {
   id?: string;
   index?: string;
   label?: string;
+  compact?: boolean;
   className?: string;
   children: ReactNode;
 }) {
   return (
     <section id={id} className={cn("relative border-t border-border", className)}>
-      <div className="mx-auto w-full max-w-6xl px-6 py-24 md:py-32">
+      <div
+        className={cn(
+          "mx-auto w-full max-w-6xl px-6",
+          compact ? "py-20 md:py-24" : "py-24 md:py-32",
+        )}
+      >
         {(index || label) && (
           <Reveal>
             <div className="mb-10 flex items-center gap-3">
@@ -89,12 +96,7 @@ export function Headline({
   as?: "h1" | "h2" | "h3";
 }) {
   return (
-    <As
-      className={cn(
-        "text-balance text-3xl font-semibold leading-[1.05] md:text-5xl",
-        className,
-      )}
-    >
+    <As className={cn("text-balance text-3xl font-semibold leading-[1.05] md:text-5xl", className)}>
       {children}
     </As>
   );
@@ -102,7 +104,12 @@ export function Headline({
 
 export function Lede({ children, className }: { children: ReactNode; className?: string }) {
   return (
-    <p className={cn("max-w-2xl text-pretty text-base leading-relaxed text-muted-foreground md:text-lg", className)}>
+    <p
+      className={cn(
+        "max-w-2xl text-pretty text-base leading-relaxed text-muted-foreground md:text-lg",
+        className,
+      )}
+    >
       {children}
     </p>
   );

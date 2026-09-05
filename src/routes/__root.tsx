@@ -77,11 +77,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Sulcus — The control layer for autonomous AI" },
+      { title: "Sulcus — Runtime control for AI agents" },
       {
         name: "description",
         content:
-          "Sulcus provides the infrastructure to supervise, coordinate, observe, and control AI-agent systems in production.",
+          "Sulcus provides scoped tool-execution controls, approval checkpoints, and structured runtime events for Python agents.",
       },
       { name: "author", content: "Sulcus" },
       { property: "og:site_name", content: "Sulcus" },

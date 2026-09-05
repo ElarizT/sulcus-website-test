@@ -77,7 +77,8 @@
   --ring: oklch(0.75 0.17 55);
 
   --grid-line: oklch(1 0 0 / 4%);
-  --glow-signal: 0 0 0 1px color-mix(in oklab, var(--signal) 40%, transparent),
+  --glow-signal:
+    0 0 0 1px color-mix(in oklab, var(--signal) 40%, transparent),
     0 0 32px -8px color-mix(in oklab, var(--signal) 55%, transparent);
   --shadow-panel: 0 24px 64px -32px oklch(0 0 0 / 80%);
 }
@@ -208,5 +209,76 @@
   }
   html {
     scroll-behavior: auto;
+  }
+}
+
+@layer components {
+  .button-primary,
+  .button-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    border-radius: var(--radius);
+    padding: 0.8rem 1.25rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+  .button-primary {
+    background: var(--primary);
+    color: var(--primary-foreground);
+  }
+  .button-primary:hover {
+    opacity: 0.9;
+  }
+  .button-secondary {
+    border: 1px solid var(--border-strong);
+  }
+  .button-secondary:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+  }
+  .stack-node {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem;
+    border: 1px solid var(--border);
+    font-size: 0.875rem;
+  }
+  .stack-node span {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    color: var(--muted-foreground);
+  }
+  .stack-arrow {
+    text-align: center;
+    padding: 0.4rem;
+    color: var(--primary);
+  }
+  .skip-link {
+    position: absolute;
+    left: 1rem;
+    top: -5rem;
+    padding: 0.75rem 1rem;
+    background: var(--primary);
+    color: var(--primary-foreground);
+  }
+  .skip-link:focus {
+    top: 0.5rem;
+    z-index: 60;
+  }
+}
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 5px;
+}
+footer a:hover {
+  color: var(--primary);
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
   }
 }
